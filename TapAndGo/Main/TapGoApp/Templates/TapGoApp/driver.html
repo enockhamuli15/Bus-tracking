@@ -1,0 +1,123 @@
+{% extends 'base-app.html' %}
+{% load crispy_forms_tags %}
+{% block content %}
+<head>
+
+    <title>BusTrack || Drivers</title>
+
+
+</head>
+
+<body id="page-top">
+
+    <!-- Page Wrapper -->
+    <div id="wrapper">
+
+        <!-- Content Wrapper -->
+        <div id="content-wrapper" class="d-flex flex-column">
+
+            <!-- Main Content -->
+            <div id="content">
+
+                 <!-- Begin Page Content -->
+                  <div class="container-fluid">
+                    <div class="d-sm-flex align-items-center justify-content-between mb-4">
+                        <h1 class="h3 mb-0 text-gray-800">--- Drivers --- </h1>
+
+
+                    </div>
+
+
+                      <!-- Page Heading -->
+                      <div class="d-sm-flex align-items-center justify-content-between mb-4">
+                      </div>
+                        <div class="col-lg-3 s"></div>
+
+
+
+                    
+                      <!-- Content Row -->
+                      <div class="row">
+
+
+
+                                <div class="container-fluid">
+                                    <!-- DataTales Example -->
+                                    <div class="card shadow mb-4">
+                                        <div class="card-header py-3">
+                                          <h6 class="m-0 font-weight-bold text-primary">Our Drivers ({{all_drivers.count}} availables)</h6>
+                                         <!-- <a  href="#"  data-toggle="modal" data-target="#RechargeModal" class=" d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm">
+                                            Add new Driver</a>
+                                        </div>-->
+                                        <div class="card-body">
+                                            <div class="table-responsive">
+                                                <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                                                    <thead>
+                                                        <tr>
+                                                            <th>Picture</th>
+                                                            <th>Id number</th>
+                                                            <th>Names</th>
+                                                            <th>Card number</th>
+                                                            <th>Card balance</th>
+                                                            <th>User type</th>
+                                                            <th>Card status</th>
+                                                           
+                                                        </tr>
+                                                    </thead>
+                                                    <tfoot>
+                                                        <tr>
+                                                            <th>Picture</th>
+                                                            <th>Id number</th>
+                                                            <th>Names</th>
+                                                            <th>Card number</th>
+                                                            <th>Card balance</th>
+                                                            <th>User type</th>
+                                                            <th>Card status</th>
+                                                            
+                                                        </tr>
+                                                    </tfoot>
+                                                    <tbody>
+                                                        {% for user in all_drivers %}
+                                                        <tr>
+                                                            <td><img src="{{user.picture.url}}" alt="" style="height: 30px; width:30px;"></td>
+                                                            <td>{{user.health.citizen.id_num}}</td>
+                                                            <td>{{user.health.citizen}}</td>
+                                                            <td>{{user.cardNum.cardnum}}</td>
+                                                            <td>{{user.cardNum.balance}}</td>
+                                                            <td>{{user.typeUser}}</td>
+                                                            <td>{{user.cardNum.status}}</td>
+                                                           
+                                                            </tr>
+                                                        {% endfor %}
+        
+        
+        
+                                                    </tbody>
+                                                </table>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                </div>
+                                <!-- /.container-fluid -->
+
+            <!-- End of Main Content -->
+              </div>
+         
+
+        </div>
+        <!-- End of Content Wrapper -->
+
+    </div>
+    <!-- End of Page Wrapper -->
+
+
+
+
+
+
+
+</body>
+
+</html>
+{% endblock content %}

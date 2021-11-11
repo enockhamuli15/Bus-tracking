@@ -1,0 +1,57 @@
+{% extends 'base-app.html' %}
+{% load crispy_forms_tags %}
+{% block content %}
+
+<head>
+
+
+    <title>BusTrack ||Administrator</title>
+
+
+</head>
+
+<body id="page-top">
+
+    <div class="container-fluid">
+
+        <!-- Page Heading -->
+        <h1 class="h3 mb-4 text-gray-800">--- Card incrementation ---</h1>
+
+                            <!-- Content Row -->
+
+                            
+
+                                <!-- Area Chart -->
+        <div class="col-xl-8 col-lg-7">
+            <div class="card shadow mb-4">
+                  {% for profile in increment %}
+                        <label>Names: <strong>{{profile.account}}</strong></label>
+                        <label>Health status: <strong>{{profile.health.report}}</strong></label>
+                        <label>User type: <strong>{{profile.typeUser}}</strong></label>
+                        <label>Card number: <strong>{{profile.cardNum}}</strong></label>
+                        <label>Card status: <strong>{{profile.cardNum.status}}</strong></label>
+                        <label>Balance: frw <strong>{{profile.cardNum.balance}}</strong></label>
+                        <label>Location: 
+                            <strong>
+                                {% if profile.cardNum.position %}
+                                On board
+                                {% else %}
+                                Out
+                                {% endif %}
+                            </strong>
+                    </label>
+                    {% endfor %}
+            </div>
+
+        </div>
+
+    </div>
+    
+
+
+
+
+</body>
+
+</html>
+{% endblock content %}

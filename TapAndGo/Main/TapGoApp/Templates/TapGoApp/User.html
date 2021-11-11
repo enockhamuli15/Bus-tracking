@@ -1,0 +1,262 @@
+{% extends 'base-app.html' %}
+{% load crispy_forms_tags %}
+{% block content %}
+
+<head>
+
+
+    <title>BusTrack ||Administrator</title>
+
+
+</head>
+
+<body id="page-top">
+
+    <!-- Page Wrapper -->
+  
+     
+                <!-- End of Topbar -->
+
+                <!-- Begin Page Content -->
+                <div class="container-fluid">
+
+                    <!-- Page Heading -->
+                    <h1 class="h3 mb-4 text-gray-800">--- New User ---</h1>
+
+                                        <!-- Content Row -->
+
+                                        <div class="row">
+
+                                            <!-- Area Chart -->
+                                            <div class="col-xl-8 col-lg-7">
+                                                <div class="card shadow mb-4">
+                                                    <!-- Card Header - Dropdown -->
+                                                   
+                                                    <!-- Card Body -->
+                                                    <!--<div class="card-body">
+
+
+
+                                                                    <form method='POST'>
+                                                                       
+                                                                    <strong><label> &nbsp; Phone number </label></strong>
+                                                                    <div class="form-group">
+                                                                      <div class="col-sm-6 mb-3 mb-sm-0">
+                                                                        <input disabled type="text" name="phone" class="form-control form-control-user" value="0787878879">
+                                                                      </div></div>
+                                                                      <strong><label> &nbsp; User  card number</label></strong>
+                                                                      <div class="form-group">
+                                                                        <div class="col-sm-6 mb-3 mb-sm-0">
+
+                                                                        <input disabled type="text" name="cardno" class="form-control form-control-user"value=" 8745872758785">
+                                                                      </div>
+                                                                    </div>
+                                                                    <strong><label> &nbsp; User email Address</label></strong>
+                                                                    <div class="form-group">
+                                                                      <div class="col-sm-6 mb-3 mb-sm-0">
+                                                                        <input disabled type="email" name="email" class="form-control form-control-user"value=" email@mail.com">
+                                                                      </div>  </div>
+                                                                    <strong><label> &nbsp; RBC Result</label></strong>
+                                                                        <div class="form-group ">
+                                                                            <div class="col-sm-6 mb-3 mb-sm-0">
+                                                                              <select disabled name="rbc" class="form-control form-control-use" >
+                                                                                          <option >Select Result</option>
+                                                                                          <option  selected value="Vaccinated">Vaccinated</option>
+                                                                                          <option value="Unvaccinated">Unvaccinated</option>
+                                                                              </select>
+                                                                            </div>
+                                                                      </div>
+                                                                      <div class="form-group">
+                                                                          
+                                                                      </div>
+
+                                                                      <button htype='submit' class="btn btn-primary btn-user btn-block">
+                                                                        Add user
+                                                                        </button>
+                                                                    </form>
+
+
+                                                      </div>
+                                                  </div>-->
+                                            </div>
+
+                                            <!-- Pie Chart -->
+                                            <!--<div class="col-xl-4 col-lg-5">
+                                                <div class="card shadow mb-4">
+                                                  Card Header - Dropdown 
+                                                    <div
+                                                        class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
+                                                        <h6 class="m-0 font-weight-bold text-primary"> #Balance: 5000(frw)</h6>
+                                                    </div>
+
+                                                </div>
+                                            </div>-->
+                                        </div>
+
+
+                                        
+                                            <div class="container-fluid">
+                                                <!-- DataTales Example -->
+                                                <div class="card shadow mb-4 ">
+                                                    <div class="card-header py-3">
+                                                        <h6 class="m-0 font-weight-bold text-primary">Users Tables</h6>
+                                                        <a href="#" data-toggle="modal" data-target="#NewUser"  class=" d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm">
+                                                        Add new user</a>
+                                                       <!-- <a href="#" data-toggle="modal" data-target="#lostcardrModal"  class=" d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm">
+                                                            Migrates Bus</a>
+                                                            <a href="#" data-toggle="modal" data-target="#TrackbusModal"  class=" d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm">
+                                                            Track Bus</a>
+                                                            <a href="#" data-toggle="modal" data-target="#busstaionModal"  class=" d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm">
+                                                                Add Bus station</a>-->
+                                                            <br>
+                    
+                    
+                                                    </div>
+                                                    <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
+                                                        <h6 class="m-0 font-weight-bold text-primary">Person Information ({{all_user.count}} availables)</h6>
+                                                        <div class="dropdown no-arrow">
+                                                            <a class="dropdown-toggle" href="#" role="button" id="dropdownMenuLink"
+                                                                data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                                            </a>
+                                                        </div>
+                                                    </div>
+                                                    <div class="card-body">
+                                                        <div class="table-responsive">
+                                                            <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                                                                <thead>
+                                                                    <tr>
+                                                                        <th>Picture</th>
+                                                                        <th>Id number</th>
+                                                                        <th>Names</th>
+                                                                        <th>Card number</th>
+                                                                        <th>User type</th>
+                                                                        <th>Card status</th>
+                                                                        <th>Actions</th>
+                                                                    </tr>
+                                                                </thead>
+                                                                <tfoot>
+                                                                    <tr>
+                                                                        <th>Picture</th>
+                                                                        <th>Id number</th>
+                                                                        <th>Names</th>
+                                                                        <th>Card number</th>
+                                                                        <th>User type</th>
+                                                                        <th>Card status</th>
+                                                                        <th>Actions</th>
+                                                                    </tr>
+                                                                </tfoot>
+                                                                <tbody>
+                                                                    {% for user in all_user %}
+                                                                    <tr>
+                                                                        <td><img src="{{user.picture.url}}" alt="" style="height: 30px; width:30px;"></td>
+                                                                        <td>{{user.health.citizen.id_num}}</td>
+                                                                        <td>{{user.health.citizen}}</td>
+                                                                        <td>{{user.cardNum.cardnum}}</td>
+                                                                        <td>{{user.typeUser}}</td>
+                                                                        <td>{{user.cardNum.status}}</td>
+
+                                                                        <td>
+                                                                            <a  href="{{user.get_absolute_url}}" class="btn btn-secondary btn-sm" name="Detail" >Detail</a> &nbsp;&nbsp;&nbsp;
+                                                                            <a  href="{% url 'user_delete' pk=user.account.id %}" class="btn btn-danger btn-sm" name="Delete" >Delete</a> &nbsp;&nbsp;&nbsp;
+                                                                            <a  href="{% url 'user_update' pk=user.account.id %}" class="btn btn-primary btn-sm" Name="Edit" >Edit</a>
+                                                                        </td>
+                                                                    </tr>
+                                                                    {% endfor %}
+                    
+                    
+                    
+                                                                </tbody>
+                                                            </table>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                    
+                                            </div>
+
+                                        
+
+                </div>
+                <!-- /.container-fluid -->
+
+
+    <!-- End of Page Wrapper -->
+
+    <!-- Scroll to Top Button-->
+
+
+    <!-- Logout Modal-->
+    <div class="modal fade" id="logoutModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+        aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Ready to Leave?</h5>
+                    <button class="close" type="button" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">×</span>
+                    </button>
+                </div>
+                <div class="modal-body">Select "Logout" below if you are ready to end your current session.</div>
+                <div class="modal-footer">
+                    <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
+                    <a class="btn btn-primary" href="login.html">Logout</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!--  registernew busesModal-->
+    <div class="modal fade" id="NewUser" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+    aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalLabel">Register New Bus</h5>
+            </div>
+            <br>
+            <form method="POST">
+                {% csrf_token %}
+             <!-- <strong><label> &nbsp;Plate No</label></strong>
+              <div class="form-group">
+                <div class="col-sm-6 mb-3 mb-sm-0">
+                <input type="text" name="plateno"class="form-control form-control-user"placeholder="Plate number ....">
+              </div>
+            </div>
+            <br>
+                <strong><label> &nbsp;Driver name</label></strong>
+              <div class="form-group">
+                <div class="col-sm-6 mb-3 mb-sm-0">
+                <input type="text" name="Driver" class="form-control form-control-user"placeholder=" Bus Driver name....">
+              </div>
+            </div> <br>
+                <strong><label> &nbsp;Road Description</label></strong>
+              <div class="form-group ">
+                  <div class="col-sm-6 mb-3 mb-sm-0">
+                    <select  name="roadname"class="form-control form-control-use" >
+                                <option selected>Select Assigned Road Description</option>
+                                <option value="Passenger">TOWN-ULK-KAGUGU</option>
+                    </select>
+                  </div>
+            </div>-->
+            {{add_user|crispy}}
+
+                <br>
+                <div class="modal-footer">
+                    <button class="btn btn-secondary" type="button" data-dismiss="modal">Close</button>
+                    <button name="newuser" class="btn btn-user btn-primary" type="submit" >
+                        Add User</button>
+
+
+                </div>
+            </form>
+
+
+        </div>
+    </div>
+</div>
+
+
+
+</body>
+
+</html>
+{% endblock content %}

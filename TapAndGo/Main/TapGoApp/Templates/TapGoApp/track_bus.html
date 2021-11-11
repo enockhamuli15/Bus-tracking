@@ -1,0 +1,29 @@
+{% extends 'base-app.html' %}
+{% block content %}
+<h2 class="modal-title" id="exampleModalLabel"> --- Track Buses ---</h2>
+
+
+
+<form  method='POST'>
+
+  <strong ><label> &nbsp; From your location to the  Destination</label></strong>
+    <div class="form-group row">
+        <div class="col-sm-6 mb-3 mb-sm-0">
+            <input type="text" class="form-control form-control-user"placeholder="From">
+        </div>
+
+        <div class="col-sm-6">
+            <input type="text" class="form-control form-control-user"
+                placeholder="To">
+        </div>
+    </div>
+
+    <div class="text-center">
+
+      <a class="btn btn-primary" href="" type="submit" name="track" >
+          Track the bus</a>
+          
+
+    </div>
+</form>
+{% endblock content %}

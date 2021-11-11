@@ -1,0 +1,392 @@
+{% extends 'base-app.html' %}
+{% load crispy_forms_tags %}
+{% block content %}
+
+<head>
+
+
+    <title>BusTrack ||Passenger </title>
+
+
+</head>
+
+<body id="page-top">
+
+    <!-- Page Wrapper -->
+    <div id="wrapper">
+
+
+        <!-- Content Wrapper -->
+        <div id="content-wrapper" class="d-flex flex-column">
+
+            <!-- Main Content -->
+            <div id="content">
+
+
+                <!-- Begin Page Content -->
+                <div class="container-fluid">
+                  <div class="d-sm-flex align-items-center justify-content-between mb-4">
+                      <h1 class="h3 mb-0 text-gray-800">{{profile}}</h1>
+
+                        <h3 class="h3 mb-0 text-gray-800">Your balance is: (frw) {{profile.cardNum.balance}}</h3>
+                  </div>
+
+
+                    <!-- Page Heading -->
+                    <div class="d-sm-flex align-items-center justify-content-between mb-4">
+                    </div>
+                      <div class="col-lg-3 s"></div>
+
+
+
+
+                    <!-- Content Row -->
+                    <div class="row">
+
+                     
+
+                <div class="container-fluid">
+                    <!-- DataTales Example -->
+                    <div class="card shadow mb-4">
+                        <div class="card-header py-3">
+                          <h6 class="m-0 font-weight-bold text-primary">Your transactions</h6>
+                          
+
+                        </div>
+                        <div class="card-body">
+                            <div class="table-responsive">
+                                <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                                    <thead>
+                                        <tr>
+                                            <th>Transaction id</th>
+                                            <th>Card id</th>
+                                            <th>Amount(frw)</th>
+                                            <th>User description</th>
+                                        </tr>
+                                    </thead>
+                                    <tfoot>
+                                        <tr>
+                                          <th>Transaction id</th>
+                                          <th>Card id</th>
+                                          <th>Amount(frw)</th>
+                                          <th>User description</th>
+                                        </tr>
+                                    </tfoot>
+                                    <tbody>
+                                        {% for bal in my_cash %}
+                                        <tr>
+                                            <td>{{bal.transaction}}</td>
+                                            <td>{{bal.account.cardNum}}</td>
+                                            <td>{{bal.balance}}</td>
+                                            <td>{{bal.account.typeUser}}</td>
+                                        </tr>
+                                        {% endfor %}
+                               
+
+
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+                <!-- /.container-fluid -->
+
+            </div>
+            <!-- End of Main Content -->
+              </div>
+        
+
+        </div>
+        <!-- End of Content Wrapper -->
+
+
+
+    <!-- Scroll to Top Button-->
+    <a class="scroll-to-top rounded" href="#page-top">
+        <i class="fas fa-angle-up"></i>
+    </a>
+
+    <!-- Logout Modal-->
+    <div class="modal fade" id="logoutModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+        aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Ready to Leave?</h5>
+                    <button class="close" type="button" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">×</span>
+                    </button>
+                </div>
+                <div class="modal-body">Select "Logout" below if you are ready to end your current session.</div>
+                <div class="modal-footer">
+                    <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
+                    <a class="btn btn-primary" href="login.html">Logout</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
+      <!--track bus modal -->
+        <div class="modal fade" id="TrackModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+            aria-hidden="true">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Track Buses</h5>
+
+                    </div>
+                    <br>
+                    <form class="user">
+                        <div class="form-group row">
+                            <div class="col-sm-6 mb-3 mb-sm-0">
+                                <input type="text" class="form-control form-control-user"placeholder="From">
+                            </div>
+                            <div class="col-sm-6">
+                                <input type="text" class="form-control form-control-user"
+                                    placeholder="To">
+                            </div>
+                        </div>
+
+                        <div class="text-center">
+
+                          <a class="btn btn-primary" href="" data-toggle="modal" data-target="#TrackresultModal" name="track" >
+                              Track the bus</a>
+
+                        </div>
+                    </form>
+
+
+                    <div class="modal-footer">
+                        <button class="btn btn-secondary" type="button" data-dismiss="modal">Close</button>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+
+
+    <!--  tracking Result modal-->
+        <div class="modal fade" id="TrackresultModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+            aria-hidden="true">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalLabel">Tracking Result</h5>
+                        <button class="close" type="button" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true"></span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                      Plate number:   <br>
+                      Direction:  <br>
+                      Available sits: <br>
+                      Estimated waiting time:  <br>
+
+                    </div>
+                    <div class="modal-footer">
+                        <button class="btn btn-secondary" type="button" data-dismiss="modal">Close</button>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+
+
+        <!--  RechargeModal-->
+        <div class="modal fade" id="RechargeModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+            aria-hidden="true">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Recharge amount</h5>
+                    </div>
+                    <br>
+                    <form class="user">
+                      <div class="text-center">
+                        <input type="text" class="form-control form-control-user"placeholder=" Passenger Card id....">
+                      </div>
+                      <br>
+
+                        <div class="text-center">
+
+                        <a class="btn btn-primary" Name="Recharge" href="" data-toggle="modal" data-target="#RechargeresultModal" name="Rechargeresult" >
+                            Recharge money</a>
+
+
+                        </div>
+
+                        <br>
+                    </form>
+
+
+                    <div class="modal-footer">
+                        <button class="btn btn-secondary" type="button" data-dismiss="modal">Close</button>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!--  Recharge Result modal-->
+            <div class="modal fade" id="RechargeresultModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+                aria-hidden="true">
+                <div class="modal-dialog" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="exampleModalLabel">New balance </h5>
+                            <button class="close" type="button" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true"></span>
+                            </button>
+                        </div>
+                        <div class="modal-body">
+                          <br>
+                          Card id:   <br>
+                          balance:  <br>
+                          Recharged amount:   <br>
+                          New balance:  <br>
+
+                        </div>
+                        <div class="modal-footer">
+                            <button class="btn btn-secondary" type="button" data-dismiss="modal">Close</button>
+
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+                <!--  registernew cardModal-->
+                                <div class="modal fade" id="NewpassangerModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+                                    aria-hidden="true">
+                                    <div class="modal-dialog" role="document">
+                                        <div class="modal-content">
+                                            <div class="modal-header">
+                                            <h5 class="modal-title" id="exampleModalLabel">Register New Users</h5>
+                                            </div>
+                                            <br>
+                                            <form >
+                                              <strong><label> &nbsp; National Id </label></strong>
+                                              <div class="form-group">
+                                                <div class="col-sm-6 mb-3 mb-sm-0">
+                                                <input type="text" name="id"class="form-control form-control-user"placeholder=" National Id ....">
+                                              </div>
+                                            </div>
+
+                                            <strong><label> &nbsp; Phone number </label></strong>
+                                            <div class="form-group">
+                                              <div class="col-sm-6 mb-3 mb-sm-0">
+                                                <input type="text" name="phone" class="form-control form-control-user"placeholder=" Owner phone number....">
+                                              </div></div>
+                                              <strong><label> &nbsp; User  name number</label></strong>
+                                              <div class="form-group">
+                                                <div class="col-sm-6 mb-3 mb-sm-0">
+                                                <input type="text" name="name" class="form-control form-control-user"placeholder=" user  name ....">
+                                              </div>  </div>
+                                              <strong><label> &nbsp; User  card number</label></strong>
+                                              <div class="form-group">
+                                                <div class="col-sm-6 mb-3 mb-sm-0">
+
+                                                <input type="text" name="cardno" class="form-control form-control-user"placeholder="  card id ....">
+                                              </div>
+                                            </div>
+                                            <strong><label> &nbsp; User email Address</label></strong>
+                                            <div class="form-group">
+                                              <div class="col-sm-6 mb-3 mb-sm-0">
+                                                <input type="email" name="email" class="form-control form-control-user"placeholder=" email address....">
+                                              </div>  </div>
+
+                                                <strong><label> &nbsp; User Credential</label></strong>
+                                              <div class="form-group ">
+                                                  <div class="col-sm-6 mb-3 mb-sm-0">
+                                                    <select  name="type_user"class="form-control form-control-use" >
+                                                                <option >Select Type users</option>
+                                                                <option selected value="Passenger">Passenger</option>
+
+                                                    </select>
+                                                  </div>
+                                            </div>
+
+
+                                                <br>
+
+
+                                            <div class="modal-footer">
+                                                <button class="btn btn-secondary" type="button" data-dismiss="modal">Close</button>
+                                                <button name="newuser" class="btn btn-user btn-primary"  >
+                                                  Register a User</button>
+                                                      </form>
+
+
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                        <!--  lostcard cardModal-->
+                        <div class="modal fade" id="lostcardrModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+                            aria-hidden="true">
+                            <div class="modal-dialog" role="document">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                    <h5 class="modal-title" id="exampleModalLabel">Migrate lostcard </h5>
+                                    </div>
+                                    <br>
+                                    <form  >
+                                      <strong><label> &nbsp; Natioanl id</label></strong>
+                                        <div class="form-group ">
+                                            <div class="col-sm-6 mb-3 mb-sm-0">
+                                        <input type="text" name="id"class="form-control form-control-user"placeholder=" Owner Id number....">
+                                      </div></div>
+                                      <strong><label> &nbsp; Card id</label></strong>
+                                        <div class="form-group">
+                                            <div class="col-sm-6 mb-3 mb-sm-0">
+                                        <input type="text" name="cardid" class="form-control form-control-user"placeholder=" new card id ....">
+                                      </div>
+                                    </div>
+
+                                        <div class="text-center">
+                                            <button name="Migratecard" class="btn btn-primary" >
+                                                Recharge</button>
+                                        </div>
+                                        <br>
+                                    </form>
+
+                                    <div class="modal-footer">
+                                        <button class="btn btn-secondary" type="button" data-dismiss="modal">Close</button>
+
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+
+    <!-- Bootstrap core JavaScript-->
+    <script src="vendor/jquery/jquery.min.js"></script>
+    <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+
+    <!-- Core plugin JavaScript-->
+    <script src="vendor/jquery-easing/jquery.easing.min.js"></script>
+
+    <!-- Custom scripts for all pages-->
+    <script src="js/sb-admin-2.min.js"></script>
+
+    <!-- Page level plugins -->
+    <script src="vendor/chart.js/Chart.min.js"></script>
+
+    <!-- Page level custom scripts -->
+    <script src="js/demo/chart-area-demo.js"></script>
+    <script src="js/demo/chart-pie-demo.js"></script>
+
+</body>
+
+</html>
+{% endblock content %}

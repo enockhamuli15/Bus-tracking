@@ -1,0 +1,123 @@
+{% extends 'base-app.html' %}
+{% load crispy_forms_tags %}
+{% block content %}
+
+<head>
+ 
+
+    <title>BusTrack || Dashboard</title>
+
+
+</head>
+
+<body id="page-top">
+
+    <!-- Page Wrapper -->
+
+
+
+
+                 <!-- Begin Page Content -->
+            <div class="container-fluid">
+                    <div class="d-sm-flex align-items-center justify-content-between mb-4">
+                        <h1 class="h3 mb-0 text-gray-800">--- Passenger --- </h1>
+
+
+                    </div>
+
+
+                      <!-- Page Heading -->
+                      <div class="d-sm-flex align-items-center justify-content-between mb-4">
+                      </div>
+                        <div class="col-lg-3 s"></div>
+
+
+
+
+                      <!-- Content Row -->
+                      <div class="row">
+
+
+
+                                <div class="container-fluid">
+                                    <!-- DataTales Example -->
+                                    <div class="card shadow mb-4">
+                                        <div class="card-header py-3">
+                                          <h6 class="m-0 font-weight-bold text-primary">Users Tables ({{all_passengers.count}} availables)</h6>
+                                          <!--<a href="#" data-toggle="modal" data-target="#NewpassangerModal"  class=" d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm">
+                                            Add new Users</a>
+                                            <a href="#" data-toggle="modal" data-target="#lostcardrModal"  class=" d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm">Migrates lost card</a>
+                                              <br>-->
+
+                                        </div>
+                                        <div class="card-body">
+                                            <div class="table-responsive">
+                                                <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                                                    <thead>
+                                                        <tr>
+                                                            <th>Picture</th>
+                                                            <th>Id number</th>
+                                                            <th>Names</th>
+                                                            <th>Card number</th>
+                                                            <th>Card balance</th>
+                                                            <th>User type</th>
+                                                            <th>Card status</th>
+                                                            <th>Actions</th>
+                                                        </tr>
+                                                    </thead>
+                                                    <tfoot>
+                                                        <tr>
+                                                            <th>Picture</th>
+                                                            <th>Id number</th>
+                                                            <th>Names</th>
+                                                            <th>Card number</th>
+                                                            <th>Card balance</th>
+                                                            <th>User type</th>
+                                                            <th>Card status</th>
+                                                            <th>Actions</th>
+                                                          
+                                                        </tr>
+                                                    </tfoot>
+                                                    <tbody>
+                                                        {% for user in all_passengers %}
+                                                        <tr>
+                                                            <td><img src="{{user.picture.url}}" alt="" style="height: 30px; width:30px;"></td>
+                                                            <td>{{user.health.citizen.id_num}}</td>
+                                                            <td>{{user.health.citizen}}</td>
+                                                            <td>{{user.cardNum.cardnum}}</td>
+                                                            <td>{{user.cardNum.balance}}</td>
+                                                            <td>{{user.typeUser}}</td>
+                                                            <td>{{user.cardNum.status}}</td>
+                                                            
+                                                            <td>
+                                                                <a  href="{% url 'incrementation' pk=user.cardNum.cardnum %}" class="btn btn-primary btn-sm" name="Add" >Increment</a> &nbsp;&nbsp;&nbsp;
+                                                                <a  href="{% url 'decrementation' pk=user.cardNum.cardnum %}" class="btn btn-danger btn-sm" name="Remove" >Decrement</a> &nbsp;&nbsp;&nbsp;
+                                                                
+                                                            </td>
+                                                        </tr>
+                                                        {% endfor %}
+        
+        
+        
+                                                    </tbody>
+                                                </table>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                </div>
+                                <!-- /.container-fluid -->
+                      </div>
+         
+
+            </div>
+
+
+         
+
+    
+
+</body>
+
+</html>
+{% endblock content %}

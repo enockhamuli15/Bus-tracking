@@ -1,0 +1,174 @@
+{% extends 'base-app.html' %}
+{% load crispy_forms_tags %}
+{% block content %}
+<head> 
+
+
+<title>BusTrack || Balance</title>
+
+
+</head>
+
+<body id="page-top">
+
+<!-- Page Wrapper -->
+<div id="wrapper">
+
+<!-- Sidebar -->
+
+<!-- End of Sidebar -->
+
+<!-- Content Wrapper -->
+<div id="content-wrapper" class="d-flex flex-column">
+
+<!-- Main Content -->
+<div id="content">
+
+
+
+ <!-- Begin Page Content -->
+  <div class="container-fluid">
+    <div class="d-sm-flex align-items-center justify-content-between mb-4">
+        <h1 class="h3 mb-0 text-gray-800">--- Money Transactions ---</h1>
+
+        
+    </div>
+
+
+      <!-- Page Heading -->
+      <div class="d-sm-flex align-items-center justify-content-between mb-4">
+      </div>
+        <div class="col-lg-3 s"></div>
+
+
+
+
+      <!-- Content Row -->
+      <div class="row">
+
+
+
+                <div class="container-fluid">
+                    <!-- DataTales Example -->
+                    <div class="card shadow mb-4">
+                        <div class="card-header py-3">
+                          
+                          <h6 class="m-0 font-weight-bold text-primary">Transaction Summary ({{cash.count}} transactions)</h6>
+                          <a  href="#"  data-toggle="modal" data-target="#RechargeModal" class=" d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm">
+                            Recharge</a>
+
+
+                        </div>
+                        <div class="card-body">
+                            <div class="table-responsive">
+                                <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                                    <thead>
+                                        <tr>
+                                            <th>Transaction id</th>
+                                            <th>Card id</th>
+                                            <th>Amount(frw)</th>
+                                            <th>User description</th>
+                                        </tr>
+                                    </thead>
+                                    <tfoot>
+                                        <tr>
+                                          <th>Transaction id</th>
+                                          <th>Card id</th>
+                                          <th>Amount(frw)</th>
+                                          <th>User description</th>
+                                        </tr>
+                                    </tfoot>
+                                    <tbody>
+                                        {% for bal in cash %}
+                                        <tr>
+                                            <td>{{bal.transaction}}</td>
+                                            <td>{{bal.account.cardNum}}</td>
+                                            <td>{{bal.balance}}</td>
+                                            <td>{{bal.account.typeUser}}</td>
+                                        </tr>
+                                        {% endfor %}
+                               
+
+
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+                <!-- /.container-fluid -->
+
+<!-- End of Main Content -->
+</div>
+
+<!-- End of Footer -->
+
+</div>
+<!-- End of Content Wrapper -->
+
+</div>
+<!-- End of Page Wrapper -->
+
+
+<!---   modals popover -->
+
+
+
+
+<!--  RechargeModal-->
+<!--  lostcard cardModal-->
+<div class="modal fade" id="RechargeModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+aria-hidden="true">
+<div class="modal-dialog" role="document">
+<div class="modal-content">
+  <div class="modal-header">
+  <h5 class="modal-title" id="exampleModalLabel">Recharge Amount </h5>
+  </div>
+  <br>
+  <form method="POST">
+      {% csrf_token %}
+   <!--<strong><label> &nbsp; User  Card id</label></strong>
+    <div class="form-group">
+      <div class="col-sm-6 mb-3 mb-sm-0">
+
+      <input type="text" name="cardid"class="form-control form-control-user"placeholder=" Owner card number....">
+    </div></div>
+
+    <strong><label> &nbsp; Amount </label></strong>
+    <div class="form-group">
+      <div class="col-sm-6 mb-3 mb-sm-0">
+
+      <input type="text" name="amount" class="form-control form-control-user"placeholder="Amount to be Recharged ....">
+    </div>
+    <br>-->
+    <div class="form-group">
+        {{form|crispy}}
+    </div>
+
+  <div class="modal-footer">
+      <button class="btn btn-secondary" type="button" data-dismiss="modal">Close</button>
+      <button name="recharge" class="btn btn-primary" type="submit" >
+          Recharge</button>
+
+
+  </div>
+  </form>
+</div>
+</div>
+</div>
+
+
+
+
+  <!--  R-->
+
+
+
+
+
+
+</body>
+
+</html>
+{% endblock content %}
